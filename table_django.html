@@ -1,0 +1,15 @@
+<table>
+    <tr>
+        {% for col in df.columns %}
+            <th>{{ col }}</th>
+        {% endfor %}
+    </tr>
+    {% for row in df.itertuples %}
+    <tr>
+        <td>{{ row.Title }}</td>
+        <td>{{ row.Author }}</td>
+        <td>{{ row.Genre }}</td>
+        <td>{{ row.Rating }}</td>
+    </tr>
+    {% endfor %}
+</table>
