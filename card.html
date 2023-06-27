@@ -1,0 +1,10 @@
+<div class="cards">
+    {% for index, row in df.iterrows() %}
+    <div class="card">
+        <h2>{{ row['Title'] }}</h2>
+        <h3>By {{ row['Author'] }}</h3>
+        <p>Genre: {{ row['Genre'] }}</p>
+        <p>Rating: {{ row['Rating'] }}</p>
+    </div>
+    {% endfor %}
+</div>
