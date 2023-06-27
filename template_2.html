@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Employee Data</title>
+        <style>
+            .senior { background-color: lightgrey; }
+            .high-salary { color: red; font-weight: bold; }
+        </style>
+    </head>
+    <body>
+        <h1>Employee Data</h1>
+        <table>
+            <tr>
+                {% for col in df.columns %}
+                    <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+            {% for index, row in df.iterrows() %}
+            <tr class="{{ 'senior' if row['Age'] > 50 else '' }}">
+                <td>{{ row['Name'] }}</td>
+                <td>{{ row['Age'] }}</td>
+                <td>{{ row['Position'] }}</td>
+                <td class="{{ 'high-salary' if row['Salary'] > 5000 else '' }}">
+                    {{ row['Salary'] }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
