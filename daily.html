@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Daily Reports</title>
+        <!-- Add your CSS here -->
+        <!-- You may need to include a JavaScript library for the date picker -->
+    </head>
+    <body>
+        <h1>Daily Reports</h1>
+        <label for="report-date">Select a date:</label>
+        <select id="report-date" onchange="loadReport()">
+            {% for date in dates %}
+            <option value="{{ date }}">{{ date }}</option>
+            {% endfor %}
+        </select>
+        
+        <div id="report-container">
+            <!-- The selected report will be loaded here -->
+        </div>
+
+        <script>
+            function loadReport() {
+                var date = document.getElementById('report-date').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'report-' + date + '.html');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        document.getElementById('report-container').innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send();
+            }
+        </script>
+    </body>
+</html>
